@@ -1083,3 +1083,91 @@ AttributeError: 'UserCRUD' object has no attribute 'update_user'
 2025-08-15 17:37:26,887 - uvicorn.error - INFO - Waiting for application startup.
 2025-08-15 17:37:26,916 - app - INFO - Creating database tables...
 2025-08-15 17:37:26,934 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:19:19,599 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:19:19,700 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:19:19,700 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:19:19,700 - uvicorn.error - INFO - Finished server process [95591]
+2025-08-15 18:19:20,793 - uvicorn.error - INFO - Started server process [102630]
+2025-08-15 18:19:20,794 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:19:20,838 - app - INFO - Creating database tables...
+2025-08-15 18:19:20,846 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:19:22,860 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:19:22,961 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:19:22,961 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:19:22,961 - uvicorn.error - INFO - Finished server process [102630]
+2025-08-15 18:19:23,877 - uvicorn.error - INFO - Started server process [102667]
+2025-08-15 18:19:23,877 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:19:23,931 - app - INFO - Creating database tables...
+2025-08-15 18:19:23,939 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:19:36,005 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:19:36,105 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:19:36,106 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:19:36,106 - uvicorn.error - INFO - Finished server process [102667]
+2025-08-15 18:19:37,093 - uvicorn.error - INFO - Started server process [102724]
+2025-08-15 18:19:37,094 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:19:37,140 - app - INFO - Creating database tables...
+2025-08-15 18:19:37,148 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:20:07,155 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:20:07,257 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:20:07,257 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:20:07,257 - uvicorn.error - INFO - Finished server process [102724]
+2025-08-15 18:20:08,172 - uvicorn.error - INFO - Started server process [102832]
+2025-08-15 18:20:08,172 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:20:08,211 - app - INFO - Creating database tables...
+2025-08-15 18:20:08,216 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:20:10,631 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:20:10,732 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:20:10,732 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:20:10,732 - uvicorn.error - INFO - Finished server process [102832]
+2025-08-15 18:20:11,722 - uvicorn.error - INFO - Started server process [102873]
+2025-08-15 18:20:11,722 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:20:11,766 - app - INFO - Creating database tables...
+2025-08-15 18:20:11,774 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:20:18,914 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:20:19,015 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:20:19,016 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:20:19,016 - uvicorn.error - INFO - Finished server process [102873]
+2025-08-15 18:20:22,613 - uvicorn.error - INFO - Started server process [102961]
+2025-08-15 18:20:22,614 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:20:22,663 - app - INFO - Creating database tables...
+2025-08-15 18:20:22,672 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:20:23,879 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:20:23,980 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:20:23,980 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:20:23,980 - uvicorn.error - INFO - Finished server process [102961]
+2025-08-15 18:20:25,038 - uvicorn.error - INFO - Started server process [103012]
+2025-08-15 18:20:25,038 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:20:25,082 - app - INFO - Creating database tables...
+2025-08-15 18:20:25,090 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:20:28,811 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:20:28,913 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:20:28,913 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:20:28,913 - uvicorn.error - INFO - Finished server process [103012]
+2025-08-15 18:20:29,861 - uvicorn.error - INFO - Started server process [103079]
+2025-08-15 18:20:29,861 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:20:29,904 - app - INFO - Creating database tables...
+2025-08-15 18:20:29,911 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:20:40,169 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:20:40,270 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:20:40,270 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:20:40,270 - uvicorn.error - INFO - Finished server process [103079]
+2025-08-15 18:20:41,257 - uvicorn.error - INFO - Started server process [103160]
+2025-08-15 18:20:41,257 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:20:41,304 - app - INFO - Creating database tables...
+2025-08-15 18:20:41,312 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:20:44,631 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:20:44,732 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:20:44,733 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:20:44,733 - uvicorn.error - INFO - Finished server process [103160]
+2025-08-15 18:20:45,782 - uvicorn.error - INFO - Started server process [103198]
+2025-08-15 18:20:45,782 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:20:45,825 - app - INFO - Creating database tables...
+2025-08-15 18:20:45,832 - uvicorn.error - INFO - Application startup complete.
+2025-08-15 18:20:48,850 - uvicorn.error - INFO - Shutting down
+2025-08-15 18:20:48,950 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-08-15 18:20:48,951 - uvicorn.error - INFO - Application shutdown complete.
+2025-08-15 18:20:48,951 - uvicorn.error - INFO - Finished server process [103198]
+2025-08-15 18:20:49,736 - uvicorn.error - INFO - Started server process [103234]
+2025-08-15 18:20:49,736 - uvicorn.error - INFO - Waiting for application startup.
+2025-08-15 18:20:49,776 - app - INFO - Creating database tables...
+2025-08-15 18:20:49,782 - uvicorn.error - INFO - Application startup complete.
