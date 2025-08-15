@@ -28,6 +28,7 @@ async def login(user: UserLogin, db: AsyncSession=Depends(get_async_db),):
     token = create_access_token(data={"sub": db_user.id})
     if not token:
         raise ErrorResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Token creation failed", message="Internal Server Error")
+    
     return SuccessResponse(
         detail={"access_token": token, "token_type": "bearer", "user_id": db_user.id, "email": db_user.email},
         status_code=status.HTTP_200_OK,

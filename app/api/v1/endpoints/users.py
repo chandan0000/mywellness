@@ -7,7 +7,7 @@ from app.core.database import get_async_db
 from app.crud.user_crud import UserCRUD
 from app.utils.helpers import ErrorResponse, SuccessResponse
 from app.core.security import verify_token
-from app.schemas.user import UserResponse
+from app.schemas.user import UserResponse, UserUpdate
 
 user_router = APIRouter()
 
@@ -23,8 +23,22 @@ async def get_user_by_token(user_id: int=Depends(verify_token), db: AsyncSession
             raise ErrorResponse(status_code=404, detail="User not found", message="User retrieval failed")
         return user
 
+
 @user_router.get("/", status_code=status.HTTP_200_OK, response_model=list[UserResponse])
 async def get_all_users(db: AsyncSession=Depends(get_async_db)):
     user_crud = UserCRUD(db)
     users = await user_crud.get_users()
     return users
+
+
+@user_router.put("/me", status_code=status.HTTP_200_OK, response_model=UserResponse)
+async def update_user(
+    user_data: UserUpdate,
+    user_id: int = Depends(verify_token),
+    db: AsyncSession = Depends(get_async_db)
+):
+    user_crud = UserCRUD(db)
+    user = await user_crud.update_user(user_id, user_data)
+    if not user:
+        raise ErrorResponse(status_code=404, detail="User not found", message="User update failed")
+    return user

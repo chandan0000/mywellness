@@ -1,9 +1,11 @@
+from fastapi import HTTPException,status
 from sqlalchemy import select
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.user import  User
-from app.schemas.user import UserCreate
+from app.schemas.user import  UserUpdate
+
 
 class UserCRUD:
 
@@ -22,18 +24,31 @@ class UserCRUD:
         result = await self.db.execute(stmt)
         return list(result.scalars().all())
 
-    # update user
-    async def update_user(self, user_id: int, user_data: UserCreate) -> User | None:
+
+    async def update_user(self, user_id: int, user_data: UserUpdate) -> User:
+        # Fetch the user
         user = await self.get_user(user_id)
+        
+        # If not found, throw explicit error
         if not user:
-            return None
-        for key, value in user_data.dict().items():
-            setattr(user, key, value)
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"User with ID {user_id} does not exist"
+            )
+        
+        # Update only provided fields (exclude None and ID)
+        for key, value in user_data.dict(exclude_unset=True, exclude={"id"}).items():
+            if value is not None:
+                setattr(user, key, value)
+        
+        # Commit and refresh to get latest state
         await self.db.commit()
+        await self.db.refresh(user)
+        
         return user
 
     # patch user
-    async def patch_user(self, user_id: int, user_data: UserCreate) -> User | None:
+    async def patch_user(self, user_id: int, user_data: UserUpdate) -> User | None:
         user = await self.get_user(user_id)
         if not user:
             return None
