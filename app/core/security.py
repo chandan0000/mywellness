@@ -1,0 +1,62 @@
+from datetime import datetime, timedelta
+from jose import JWTError, jwt
+from passlib.context import CryptContext
+from fastapi import Depends, HTTPException, Security, status
+from fastapi.security import APIKeyHeader, OAuth2PasswordBearer
+from app.logger import logging
+
+# Secret key & algorithm
+SECRET_KEY = "your-secret-key"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+# Password hashing
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+# Token extractor
+api_key_header = APIKeyHeader(name="Authorization",)
+# OAuth2PasswordBearer(tokenUrl="token")
+
+
+# Password helpers
+def hash_password(password: str):
+    return pwd_context.hash(password)
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return pwd_context.verify(plain_password, hashed_password)
+
+
+def create_access_token(data: dict,):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + (timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    to_encode.update({"exp": expire})
+    
+    # Ensure 'sub' is a string
+    if "sub" in to_encode:
+        to_encode["sub"] = str(to_encode["sub"])
+
+    logging.info(f"Creating access token with data: {to_encode}")
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
+
+def verify_token(token: str=Depends(api_key_header)) -> int:
+    logging.info(f"Verifying token: {token}")
+
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid or expired token",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        logging.info(f"Decoded JWT payload: {payload}")
+
+        user_id = payload.get("sub")
+        if user_id is None:
+            raise credentials_exception
+        return int(user_id)  # convert back to int for DB queries
+    except JWTError as e:
+        logging.error(f"JWT verification failed: {e}")
+        raise credentials_exception
