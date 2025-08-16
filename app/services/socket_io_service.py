@@ -3,7 +3,6 @@
 import socketio
 
 from urllib.parse import parse_qs
-from logger import logger
 
 # 1. Create a Socket.IO server with async_mode set to 'asgi' (needed for FastAPI/Starlette).
 sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins="*")
