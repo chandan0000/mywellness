@@ -34,3 +34,4 @@ psycopg2
 phonenumbers
 pydantic[email]
 python-jose[cryptography]
+python-multipart

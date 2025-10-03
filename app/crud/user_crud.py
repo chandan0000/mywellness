@@ -1,3 +1,4 @@
+import uuid
 from fastapi import HTTPException,status
 from sqlalchemy import select
 
@@ -7,48 +8,44 @@ from app.models.user import  User
 from app.schemas.user import  UserUpdate
 
 
+
 class UserCRUD:
 
     def __init__(self, db: AsyncSession):
         self.db = db
 
-    # get single user
-    async def get_user(self, user_id: int):
+    
+    async def get_user(self, user_id: uuid.UUID):
         stmt = select(User).where(User.id == user_id)
-        result = await self.db.execute(stmt)  # This now works because db is AsyncSession
+        result = await self.db.execute(stmt)  
         return result.scalar_one_or_none()
     
-    # list of user get
+    
     async def get_users(self) -> list[User]:
         stmt = select(User)
         result = await self.db.execute(stmt)
         return list(result.scalars().all())
 
 
-    async def update_user(self, user_id: int, user_data: UserUpdate) -> User:
-        # Fetch the user
+    async def update_user(self, user_id: uuid.UUID, user_data: dict):
         user = await self.get_user(user_id)
-        
-        # If not found, throw explicit error
         if not user:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=f"User with ID {user_id} does not exist"
             )
-        
-        # Update only provided fields (exclude None and ID)
-        for key, value in user_data.dict(exclude_unset=True, exclude={"id"}).items():
+    
+        for key, value in user_data.items():
             if value is not None:
                 setattr(user, key, value)
-        
-        # Commit and refresh to get latest state
+    
         await self.db.commit()
         await self.db.refresh(user)
-        
         return user
+    
 
-    # patch user
-    async def patch_user(self, user_id: int, user_data: UserUpdate) -> User | None:
+    
+    async def patch_user(self, user_id: uuid.UUID, user_data: UserUpdate) -> User | None:
         user = await self.get_user(user_id)
         if not user:
             return None
@@ -58,8 +55,8 @@ class UserCRUD:
         await self.db.commit()
         return user
 
-    # deactivate user
-    async def deactivate_user(self, user_id: int) -> User | None:
+    
+    async def deactivate_user(self, user_id: uuid.UUID) -> User | None:
         user = await self.get_user(user_id)
         if not user:
             return None

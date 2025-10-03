@@ -2,16 +2,26 @@ from fastapi import FastAPI
 from logger import logger
 from app.api.v1.routers import api_router
 from contextlib2 import asynccontextmanager
-from app.core.database import create_db_and_tables
+from app.core.database import create_db_and_tables, async_engine , engine
 from app.services.socket_io_service import socket_app
-
+import uvicorn
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("Starting application...")
+    logger.info("\U0001f680 Starting application...")
+    # Run migrations / create tables
     await create_db_and_tables()
-    yield
-    logger.info("Shutting down application...",)
+
+    # Startup logic (DB pool, cache, etc.)
+    logger.info("\u2705 Database connected")
+
+    yield  # \U0001f448 app is running here
+
+    # Shutdown logic
+    logger.info("\U0001f6d1 Shutting down application...")
+    await async_engine.dispose()   
+    engine.dispose()
+    logger.info("\u2705 Database connections closed")
 
 
 app = FastAPI(title="MyWellness", lifespan=lifespan)
@@ -24,3 +34,12 @@ def read_root():
     return {"message": "Welcome to the API"}
 
 
+if __name__ == "__main__":
+    uvicorn.run(
+        "app.main:app",   # points to your FastAPI instance
+        host="0.0.0.0",
+        port=9000,
+        reload=True,      # auto-reload on code changes
+        workers=1
+    )
+    

@@ -12,7 +12,7 @@ class User(Base):
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         primary_key=True,
-        server_default=text("uuidv7()")  # Postgres 18 new feature!
+        server_default=text("uuidv7()")  
     )
     full_name: Mapped[str] = mapped_column(index=True)
     email: Mapped[str] = mapped_column(unique=True, index=True, nullable=False)
