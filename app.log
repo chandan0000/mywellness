@@ -1171,3 +1171,377 @@ AttributeError: 'UserCRUD' object has no attribute 'update_user'
 2025-08-15 18:20:49,736 - uvicorn.error - INFO - Waiting for application startup.
 2025-08-15 18:20:49,776 - app - INFO - Creating database tables...
 2025-08-15 18:20:49,782 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:14:06,705 - uvicorn.error - INFO - Started server process [26331]
+2025-10-03 22:14:06,705 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:14:06,749 - uvicorn.error - ERROR - Traceback (most recent call last):
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/chandan/anaconda3/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/fastapi/routing.py", line 209, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ~~~~~~~~~~~~~~~~^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/contextlib2/__init__.py", line 228, in __aenter__
+    return await self.gen.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/app/main.py", line 12, in lifespan
+    await create_db_and_tables()
+  File "/home/chandan/Desktop/mywellness/app/core/database.py", line 39, in create_db_and_tables
+    async with async_engine.begin() as conn:
+               ~~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/anaconda3/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1066, in begin
+    async with conn:
+               ^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+    return await self.start(is_ctxmanager=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/engine.py", line 274, in start
+    await greenlet_spawn(self.sync_engine.connect)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 964, in connect
+    await_only(creator_fn(*arg, **kw)),
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/asyncpg/connection.py", line 2421, in connect
+    return await connect_utils._connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<20 lines>...
+    )
+    ^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/asyncpg/connect_utils.py", line 1049, in _connect
+    conn = await _connect_addr(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/asyncpg/connect_utils.py", line 891, in _connect_addr
+    return await __connect_addr(params_retry, False, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/asyncpg/connect_utils.py", line 934, in __connect_addr
+    await connected
+asyncpg.exceptions.InvalidPasswordError: password authentication failed for user "username"
+
+2025-10-03 22:14:06,749 - uvicorn.error - ERROR - Application startup failed. Exiting.
+2025-10-03 22:18:44,267 - uvicorn.error - INFO - Started server process [28240]
+2025-10-03 22:18:44,268 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:18:44,311 - uvicorn.error - ERROR - Traceback (most recent call last):
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/chandan/anaconda3/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/fastapi/routing.py", line 209, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ~~~~~~~~~~~~~~~~^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/contextlib2/__init__.py", line 228, in __aenter__
+    return await self.gen.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/app/main.py", line 12, in lifespan
+    await create_db_and_tables()
+  File "/home/chandan/Desktop/mywellness/app/core/database.py", line 39, in create_db_and_tables
+    async with async_engine.begin() as conn:
+               ~~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/anaconda3/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1066, in begin
+    async with conn:
+               ^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+    return await self.start(is_ctxmanager=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/ext/asyncio/engine.py", line 274, in start
+    await greenlet_spawn(self.sync_engine.connect)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 964, in connect
+    await_only(creator_fn(*arg, **kw)),
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/asyncpg/connection.py", line 2421, in connect
+    return await connect_utils._connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<20 lines>...
+    )
+    ^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/asyncpg/connect_utils.py", line 1049, in _connect
+    conn = await _connect_addr(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/asyncpg/connect_utils.py", line 891, in _connect_addr
+    return await __connect_addr(params_retry, False, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chandan/Desktop/mywellness/.myenv/lib/python3.13/site-packages/asyncpg/connect_utils.py", line 934, in __connect_addr
+    await connected
+asyncpg.exceptions.InvalidPasswordError: password authentication failed for user "username"
+
+2025-10-03 22:18:44,312 - uvicorn.error - ERROR - Application startup failed. Exiting.
+2025-10-03 22:22:58,820 - uvicorn.error - INFO - Started server process [29428]
+2025-10-03 22:22:58,821 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:22:58,845 - app - INFO - Creating database tables...
+2025-10-03 22:22:58,858 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:31:22,828 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:31:22,929 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:31:22,929 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:31:22,929 - uvicorn.error - INFO - Finished server process [29428]
+2025-10-03 22:34:09,057 - uvicorn.error - INFO - Started server process [33290]
+2025-10-03 22:34:09,057 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:34:09,092 - app - INFO - Creating database tables...
+2025-10-03 22:34:09,100 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:34:25,501 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:34:25,602 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:34:25,603 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:34:25,603 - uvicorn.error - INFO - Finished server process [33290]
+2025-10-03 22:34:26,104 - uvicorn.error - INFO - Started server process [33433]
+2025-10-03 22:34:26,104 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:34:26,129 - app - INFO - Creating database tables...
+2025-10-03 22:34:26,139 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:37:54,558 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:37:54,659 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:37:54,659 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:37:54,659 - uvicorn.error - INFO - Finished server process [33433]
+2025-10-03 22:38:15,564 - uvicorn.error - INFO - Started server process [34400]
+2025-10-03 22:38:15,564 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:38:15,594 - app - INFO - Creating database tables...
+2025-10-03 22:38:15,600 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:38:56,144 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:38:56,245 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:38:56,245 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:38:56,245 - uvicorn.error - INFO - Finished server process [34400]
+2025-10-03 22:39:11,860 - uvicorn.error - INFO - Started server process [34739]
+2025-10-03 22:39:11,860 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:39:11,886 - app - INFO - Creating database tables...
+2025-10-03 22:39:11,891 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:39:15,111 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:39:15,212 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:39:15,213 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:39:15,213 - uvicorn.error - INFO - Finished server process [34739]
+2025-10-03 22:39:15,726 - uvicorn.error - INFO - Started server process [34775]
+2025-10-03 22:39:15,726 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:39:15,751 - app - INFO - Creating database tables...
+2025-10-03 22:39:15,757 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:39:18,073 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:39:18,174 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:39:18,174 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:39:18,174 - uvicorn.error - INFO - Finished server process [34775]
+2025-10-03 22:39:25,472 - uvicorn.error - INFO - Started server process [34968]
+2025-10-03 22:39:25,472 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:39:25,497 - app - INFO - Creating database tables...
+2025-10-03 22:39:25,502 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:39:43,506 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:39:43,608 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:39:43,608 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:39:43,609 - uvicorn.error - INFO - Finished server process [34968]
+2025-10-03 22:39:44,160 - uvicorn.error - INFO - Started server process [35115]
+2025-10-03 22:39:44,160 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:39:44,187 - app - INFO - Creating database tables...
+2025-10-03 22:39:44,198 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:39:45,004 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:39:45,106 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:39:45,106 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:39:45,106 - uvicorn.error - INFO - Finished server process [35115]
+2025-10-03 22:39:45,619 - uvicorn.error - INFO - Started server process [35133]
+2025-10-03 22:39:45,620 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:39:45,645 - app - INFO - Creating database tables...
+2025-10-03 22:39:45,650 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:42:12,355 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:42:12,456 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:42:12,457 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:42:12,457 - uvicorn.error - INFO - Finished server process [35133]
+2025-10-03 22:42:12,994 - uvicorn.error - INFO - Started server process [35726]
+2025-10-03 22:42:12,994 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:42:13,020 - app - INFO - Creating database tables...
+2025-10-03 22:42:13,025 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:42:13,831 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:42:13,931 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:42:13,932 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:42:13,932 - uvicorn.error - INFO - Finished server process [35726]
+2025-10-03 22:42:14,436 - uvicorn.error - INFO - Started server process [35746]
+2025-10-03 22:42:14,436 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:42:14,460 - app - INFO - Creating database tables...
+2025-10-03 22:42:14,465 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:42:15,673 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:42:15,774 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:42:15,775 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:42:15,775 - uvicorn.error - INFO - Finished server process [35746]
+2025-10-03 22:42:16,287 - uvicorn.error - INFO - Started server process [35768]
+2025-10-03 22:42:16,287 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:42:16,312 - app - INFO - Creating database tables...
+2025-10-03 22:42:16,317 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:42:21,549 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:42:21,650 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:42:21,651 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:42:21,651 - uvicorn.error - INFO - Finished server process [35768]
+2025-10-03 22:42:22,202 - uvicorn.error - INFO - Started server process [35816]
+2025-10-03 22:42:22,202 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:42:22,228 - app - INFO - Creating database tables...
+2025-10-03 22:42:22,233 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:43:17,546 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:43:17,647 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:43:17,647 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:43:17,647 - uvicorn.error - INFO - Finished server process [35816]
+2025-10-03 22:43:18,249 - uvicorn.error - INFO - Started server process [36132]
+2025-10-03 22:43:18,249 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:43:18,284 - app - INFO - Creating database tables...
+2025-10-03 22:43:18,293 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:43:29,753 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:43:29,854 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:43:29,854 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:43:29,854 - uvicorn.error - INFO - Finished server process [36132]
+2025-10-03 22:43:30,378 - uvicorn.error - INFO - Started server process [36271]
+2025-10-03 22:43:30,379 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:43:30,416 - app - INFO - Creating database tables...
+2025-10-03 22:43:30,422 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:43:32,634 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:43:32,735 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:43:32,736 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:43:32,736 - uvicorn.error - INFO - Finished server process [36271]
+2025-10-03 22:43:33,354 - uvicorn.error - INFO - Started server process [36327]
+2025-10-03 22:43:33,354 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:43:33,383 - app - INFO - Creating database tables...
+2025-10-03 22:43:33,390 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:44:21,869 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:44:21,970 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:44:21,970 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:44:21,970 - uvicorn.error - INFO - Finished server process [36327]
+2025-10-03 22:44:26,852 - uvicorn.error - INFO - Started server process [36571]
+2025-10-03 22:44:26,852 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:44:26,877 - app - INFO - Creating database tables...
+2025-10-03 22:44:26,889 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:44:30,712 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:44:30,813 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:44:30,813 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:44:30,813 - uvicorn.error - INFO - Finished server process [36571]
+2025-10-03 22:44:31,337 - uvicorn.error - INFO - Started server process [36632]
+2025-10-03 22:44:31,338 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:44:31,364 - app - INFO - Creating database tables...
+2025-10-03 22:44:31,369 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:44:41,930 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:44:42,031 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:44:42,031 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:44:42,031 - uvicorn.error - INFO - Finished server process [36632]
+2025-10-03 22:44:45,252 - uvicorn.error - INFO - Started server process [36719]
+2025-10-03 22:44:45,252 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:44:45,278 - app - INFO - Creating database tables...
+2025-10-03 22:44:45,282 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:44:47,797 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:44:47,898 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:44:47,898 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:44:47,898 - uvicorn.error - INFO - Finished server process [36719]
+2025-10-03 22:46:31,632 - uvicorn.error - INFO - Started server process [37491]
+2025-10-03 22:46:31,632 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:46:31,664 - app - INFO - Creating database tables...
+2025-10-03 22:46:31,671 - uvicorn.error - INFO - Application startup complete.
+2025-10-03 22:46:49,070 - uvicorn.error - INFO - Shutting down
+2025-10-03 22:46:49,170 - uvicorn.error - INFO - Waiting for application shutdown.
+2025-10-03 22:46:49,171 - uvicorn.error - INFO - Application shutdown complete.
+2025-10-03 22:46:49,171 - uvicorn.error - INFO - Finished server process [37491]
+2025-10-03 22:46:49,692 - uvicorn.error - INFO - Started server process [37590]
+2025-10-03 22:46:49,693 - uvicorn.error - INFO - Waiting for application startup.
+2025-10-03 22:46:49,718 - app - INFO - Creating database tables...
+2025-10-03 22:46:49,729 - uvicorn.error - INFO - Application startup complete.

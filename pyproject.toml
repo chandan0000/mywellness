@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mywellness"
+version = "0.1.0"
+description = "My wellness app"
+authors = [
+  { name="Chandan Kumar", email="you@example.com" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
