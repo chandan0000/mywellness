@@ -23,7 +23,7 @@ async def login(user: UserLogin, db: AsyncSession=Depends(get_async_db),):
 
     db_user = await auth_crud.get_user_by_email(user.email)
 
-    if not db_user or not verify_password(user.password, db_user.password):
+    if not db_user  or not verify_password(user.password, db_user.password):
         raise ErrorResponse(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials", message="Authentication failed")
     token = create_access_token(data={"sub": db_user.id})
     if not token:

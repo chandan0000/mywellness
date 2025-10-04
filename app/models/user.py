@@ -18,7 +18,7 @@ class User(Base):
     email: Mapped[str] = mapped_column(unique=True, index=True, nullable=False)
     phone_number: Mapped[str] = mapped_column(unique=True, index=True, nullable=False)
     profile_url: Mapped[str | None] = mapped_column(index=True, nullable=True)
-    password: Mapped[str|None] = mapped_column(nullable=True)
+    password: Mapped[str] = mapped_column(nullable=False)
     
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, server_default=text("true"))
     is_superuser: Mapped[bool] = mapped_column(Boolean, default=False, server_default=text("false"))

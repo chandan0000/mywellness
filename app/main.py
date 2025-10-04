@@ -9,15 +9,14 @@ import uvicorn
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("\U0001f680 Starting application...")
-    # Run migrations / create tables
+
     await create_db_and_tables()
 
-    # Startup logic (DB pool, cache, etc.)
+
     logger.info("\u2705 Database connected")
 
-    yield  # \U0001f448 app is running here
+    yield 
 
-    # Shutdown logic
     logger.info("\U0001f6d1 Shutting down application...")
     await async_engine.dispose()   
     engine.dispose()
@@ -36,10 +35,10 @@ def read_root():
 
 if __name__ == "__main__":
     uvicorn.run(
-        "app.main:app",   # points to your FastAPI instance
+        "app.main:app",   
         host="0.0.0.0",
         port=9000,
-        reload=True,      # auto-reload on code changes
+        reload=True,    
         workers=1
     )
     
