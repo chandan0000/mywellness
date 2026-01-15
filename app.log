@@ -1883,3 +1883,311 @@ AttributeError: 'Engine' object has no attribute 'di'
 2025-10-04 07:21:34,085 - uvicorn.error - INFO - Waiting for application startup.
 2025-10-04 07:21:34,116 - app - INFO - Creating database tables...
 2025-10-04 07:21:34,121 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:04:15,252 - uvicorn.error - INFO - Started server process [454229]
+2026-01-08 23:04:15,252 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:04:15,282 - app - INFO - Creating database tables...
+2026-01-08 23:04:15,300 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:05:02,434 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:05:02,534 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:05:02,536 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:05:02,536 - uvicorn.error - INFO - Finished server process [454229]
+2026-01-08 23:05:03,389 - uvicorn.error - INFO - Started server process [460798]
+2026-01-08 23:05:03,389 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:05:03,430 - app - INFO - Creating database tables...
+2026-01-08 23:05:03,438 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:05:04,317 - uvicorn.error - INFO - Started server process [460836]
+2026-01-08 23:05:04,317 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:05:04,349 - app - INFO - Creating database tables...
+2026-01-08 23:05:04,356 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:05:21,543 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:05:21,643 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:05:21,645 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:05:21,645 - uvicorn.error - INFO - Finished server process [460836]
+2026-01-08 23:05:22,536 - uvicorn.error - INFO - Started server process [463298]
+2026-01-08 23:05:22,536 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:05:22,570 - app - INFO - Creating database tables...
+2026-01-08 23:05:22,577 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:06:20,870 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:06:20,970 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:06:20,972 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:06:20,972 - uvicorn.error - INFO - Finished server process [463298]
+2026-01-08 23:09:21,005 - uvicorn.error - INFO - Started server process [495561]
+2026-01-08 23:09:21,005 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:09:21,048 - app - INFO - Creating database tables...
+2026-01-08 23:09:21,056 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:09:32,012 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:09:32,112 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:09:32,114 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:09:32,114 - uvicorn.error - INFO - Finished server process [495561]
+2026-01-08 23:09:33,230 - uvicorn.error - INFO - Started server process [497202]
+2026-01-08 23:09:33,230 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:09:33,272 - app - INFO - Creating database tables...
+2026-01-08 23:09:33,280 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:09:54,794 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:09:54,895 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:09:54,897 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:09:54,897 - uvicorn.error - INFO - Finished server process [497202]
+2026-01-08 23:10:01,672 - uvicorn.error - INFO - Started server process [500874]
+2026-01-08 23:10:01,672 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:10:01,718 - app - INFO - Creating database tables...
+2026-01-08 23:10:01,726 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:43:29,782 - uvicorn.access - INFO - 192.168.0.101:34720 - "POST /calculate HTTP/1.1" 500
+2026-01-08 23:43:29,783 - uvicorn.error - ERROR - Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/chandan/.local/lib/python3.10/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/chandan/.local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/home/chandan/Desktop/mywellness/app/main.py", line 62, in calculate
+    aes_key = private_key.decrypt(
+ValueError: Decryption failed
+2026-01-08 23:44:41,040 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:44:41,141 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:44:41,165 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:44:41,165 - uvicorn.error - INFO - Finished server process [500874]
+2026-01-08 23:44:42,930 - uvicorn.error - INFO - Started server process [780831]
+2026-01-08 23:44:42,931 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:44:42,972 - app - INFO - Creating database tables...
+2026-01-08 23:44:42,980 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:45:28,807 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:45:28,908 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:45:28,911 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:45:28,911 - uvicorn.error - INFO - Finished server process [780831]
+2026-01-08 23:45:30,286 - uvicorn.error - INFO - Started server process [787109]
+2026-01-08 23:45:30,287 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:45:30,335 - app - INFO - Creating database tables...
+2026-01-08 23:45:30,345 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:49:44,811 - uvicorn.access - INFO - 192.168.0.101:44476 - "POST /calculate HTTP/1.1" 500
+2026-01-08 23:49:44,811 - uvicorn.error - ERROR - Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/chandan/.local/lib/python3.10/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/chandan/.local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/home/chandan/Desktop/mywellness/app/main.py", line 62, in calculate
+    aes_key = private_key.decrypt(
+ValueError: Decryption failed
+2026-01-08 23:50:24,157 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:50:24,258 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:50:24,259 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:50:24,259 - uvicorn.error - INFO - Finished server process [787109]
+2026-01-08 23:50:25,151 - uvicorn.error - INFO - Started server process [826415]
+2026-01-08 23:50:25,151 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:50:25,184 - app - INFO - Creating database tables...
+2026-01-08 23:50:25,189 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:50:56,189 - uvicorn.access - INFO - 192.168.0.101:44992 - "POST /calculate HTTP/1.1" 500
+2026-01-08 23:50:56,190 - uvicorn.error - ERROR - Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/chandan/.local/lib/python3.10/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/chandan/.local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/home/chandan/.local/lib/python3.10/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/chandan/.local/lib/python3.10/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/home/chandan/.local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/home/chandan/Desktop/mywellness/app/main.py", line 59, in calculate
+    aes_key_base64 = private_key.decrypt(
+ValueError: Decryption failed
+2026-01-08 23:51:25,315 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:51:25,415 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:51:25,417 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:51:25,417 - uvicorn.error - INFO - Finished server process [826415]
+2026-01-08 23:51:38,413 - uvicorn.error - INFO - Started server process [836452]
+2026-01-08 23:51:38,413 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:51:38,443 - app - INFO - Creating database tables...
+2026-01-08 23:51:38,448 - uvicorn.error - INFO - Application startup complete.
+2026-01-08 23:51:39,051 - uvicorn.error - INFO - Shutting down
+2026-01-08 23:51:39,152 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-01-08 23:51:39,154 - uvicorn.error - INFO - Application shutdown complete.
+2026-01-08 23:51:39,154 - uvicorn.error - INFO - Finished server process [836452]
+2026-01-08 23:52:55,851 - uvicorn.error - INFO - Started server process [847045]
+2026-01-08 23:52:55,851 - uvicorn.error - INFO - Waiting for application startup.
+2026-01-08 23:52:55,881 - app - INFO - Creating database tables...
+2026-01-08 23:52:55,886 - uvicorn.error - INFO - Application startup complete.
+2026-01-12 23:54:45,106 - app - INFO - 🚀 Starting application...
+2026-01-12 23:54:45,173 - app - INFO - Creating database tables...
+2026-01-12 23:54:45,249 - app - INFO - ✅ Database connected
+2026-01-12 23:56:57,858 - app - INFO - 🛑 Shutting down application...
+2026-01-12 23:56:57,860 - app - INFO - ✅ Database connections closed
+2026-01-12 23:57:44,081 - app - INFO - 🚀 Starting application...
+2026-01-12 23:57:44,111 - app - INFO - Creating database tables...
+2026-01-12 23:57:44,126 - app - INFO - ✅ Database connected
+2026-01-13 01:07:23,396 - app - INFO - 🛑 Shutting down application...
+2026-01-13 01:07:23,402 - app - INFO - ✅ Database connections closed
+2026-01-13 01:07:25,559 - app - INFO - 🚀 Starting application...
+2026-01-13 01:07:25,597 - app - INFO - Creating database tables...
+2026-01-13 01:07:25,614 - app - INFO - ✅ Database connected
+2026-01-13 21:29:32,664 - app - INFO - 🚀 Starting application...
+2026-01-13 21:29:32,711 - app - INFO - Creating database tables...
+2026-01-13 21:29:32,728 - app - INFO - ✅ Database connected
+2026-01-13 22:20:46,707 - app - INFO - 🛑 Shutting down application...
+2026-01-13 22:20:46,711 - app - INFO - ✅ Database connections closed
+2026-01-13 22:20:48,560 - app - INFO - 🚀 Starting application...
+2026-01-13 22:20:48,605 - app - INFO - Creating database tables...
+2026-01-13 22:20:48,622 - app - INFO - ✅ Database connected
+2026-01-13 22:20:59,882 - app - INFO - 🛑 Shutting down application...
+2026-01-13 22:20:59,883 - app - INFO - ✅ Database connections closed
+2026-01-13 22:21:03,941 - app - INFO - 🚀 Starting application...
+2026-01-13 22:21:03,980 - app - INFO - Creating database tables...
+2026-01-13 22:21:03,998 - app - INFO - ✅ Database connected
+2026-01-13 22:23:39,444 - app - INFO - 🚀 Starting application...
+2026-01-13 22:23:39,486 - app - INFO - Creating database tables...
+2026-01-13 22:23:39,505 - app - INFO - ✅ Database connected
+2026-01-13 22:24:40,379 - app - INFO - 🚀 Starting application...
+2026-01-13 22:24:40,424 - app - INFO - Creating database tables...
+2026-01-13 22:24:40,445 - app - INFO - ✅ Database connected
+2026-01-13 22:29:03,967 - app - INFO - 🛑 Shutting down application...
+2026-01-13 22:29:03,976 - app - INFO - ✅ Database connections closed
+2026-01-13 22:29:18,244 - app - INFO - 🚀 Starting application...
+2026-01-13 22:29:18,273 - app - INFO - Creating database tables...
+2026-01-13 22:29:18,285 - app - INFO - ✅ Database connected
+2026-01-13 22:30:53,825 - app - INFO - 🛑 Shutting down application...
+2026-01-13 22:30:53,840 - app - INFO - ✅ Database connections closed
+2026-01-13 22:30:55,365 - app - INFO - 🚀 Starting application...
+2026-01-13 22:30:55,416 - app - INFO - Creating database tables...
+2026-01-13 22:30:55,440 - app - INFO - ✅ Database connected
+2026-01-13 22:44:31,729 - app - INFO - 🛑 Shutting down application...
+2026-01-13 22:44:31,741 - app - INFO - ✅ Database connections closed
+2026-01-13 22:44:33,057 - app - INFO - 🚀 Starting application...
+2026-01-13 22:44:33,107 - app - INFO - Creating database tables...
+2026-01-13 22:44:33,133 - app - INFO - ✅ Database connected
+2026-01-13 22:44:34,240 - app - INFO - 🛑 Shutting down application...
+2026-01-13 22:44:34,242 - app - INFO - ✅ Database connections closed
+2026-01-13 22:44:35,288 - app - INFO - 🚀 Starting application...
+2026-01-13 22:44:35,327 - app - INFO - Creating database tables...
+2026-01-13 22:44:35,345 - app - INFO - ✅ Database connected
+2026-01-13 23:24:55,192 - app - INFO - 🛑 Shutting down application...
+2026-01-13 23:24:55,197 - app - INFO - ✅ Database connections closed
+2026-01-13 23:24:57,386 - app - INFO - 🚀 Starting application...
+2026-01-13 23:24:57,446 - app - INFO - Creating database tables...
+2026-01-13 23:24:57,468 - app - INFO - ✅ Database connected
+2026-01-13 23:33:13,121 - app - INFO - 🛑 Shutting down application...
+2026-01-13 23:33:13,125 - app - INFO - ✅ Database connections closed
+2026-01-13 23:33:49,523 - app - INFO - 🚀 Starting application...
+2026-01-13 23:33:49,567 - app - INFO - Creating database tables...
+2026-01-13 23:33:49,587 - app - INFO - ✅ Database connected
+2026-01-13 23:46:09,985 - app - INFO - 🛑 Shutting down application...
+2026-01-13 23:46:09,986 - app - INFO - ✅ Database connections closed

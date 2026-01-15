@@ -79,6 +79,8 @@ async def register(user: UserCreate, db: AsyncSession=Depends(get_async_db)):
         )
 
     except Exception as e:
+
         await db.rollback()
+        
         logging.error(f"Error registering user: {e}")
         raise ErrorResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Some thing went wrong", message="Internal Server Error")

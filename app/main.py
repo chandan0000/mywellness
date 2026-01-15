@@ -1,10 +1,21 @@
 from fastapi import FastAPI
-from logger import logger
+from fastapi.middleware.cors import CORSMiddleware
+from app.logger import logger
 from app.api.v1.routers import api_router
 from contextlib2 import asynccontextmanager
 from app.core.database import create_db_and_tables, async_engine , engine
 from app.services.socket_io_service import socket_app
 import uvicorn
+
+
+import base64
+import json
+import os
+from pydantic import BaseModel
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -24,15 +35,19 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="MyWellness", lifespan=lifespan)
+
+# CORS Configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
+
 app.mount("/socket.io", socket_app)
 app.include_router(api_router, prefix="/api/v1")
-
-
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the API"}
-
-
+ 
 if __name__ == "__main__":
     uvicorn.run(
         "app.main:app",   
