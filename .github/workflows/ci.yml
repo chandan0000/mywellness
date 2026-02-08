@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [ main ]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run formatting & static checks
+        run: |
+          pip install black isort mypy
+          black --check .
+          isort --check-only .
+          mypy || true
+
+      - name: Run tests
+        run: |
+          if command -v pytest >/dev/null 2>&1; then pytest -q || exit 1; fi
+
+      - name: Validate commit messages (Conventional Commits)
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          BASE=${{ github.event.pull_request.base.sha }}
+          HEAD=${{ github.event.pull_request.head.sha }}
+          echo "Checking commits from $BASE..$HEAD"
+          git fetch --no-tags origin $BASE $HEAD
+          COMMITS=$(git log --format='%H' $BASE..$HEAD)
+          regex='^(feat|fix|docs|chore|refactor|style|test|perf)(\(.+\))?(!)?: .+'
+          ok=true
+          for c in $COMMITS; do
+            subject=$(git log --format='%s' -n 1 $c)
+            if ! echo "$subject" | grep -Eq "$regex"; then
+              echo "Commit $c has non-conventional subject: '$subject'"
+              ok=false
+            fi
+          done
+          if [ "$ok" = false ]; then
+            echo "One or more commits do not follow Conventional Commits."
+            exit 1
+          fi

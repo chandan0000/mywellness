@@ -1,10 +1,12 @@
+import uvicorn
+from contextlib2 import asynccontextmanager
 from fastapi import FastAPI
 from logger import logger
+
 from app.api.v1.routers import api_router
-from contextlib2 import asynccontextmanager
-from app.core.database import create_db_and_tables, async_engine , engine
+from app.core.database import async_engine, create_db_and_tables, engine
 from app.services.socket_io_service import socket_app
-import uvicorn
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -12,13 +14,12 @@ async def lifespan(app: FastAPI):
 
     await create_db_and_tables()
 
-
     logger.info("\u2705 Database connected")
 
-    yield 
+    yield
 
     logger.info("\U0001f6d1 Shutting down application...")
-    await async_engine.dispose()   
+    await async_engine.dispose()
     engine.dispose()
     logger.info("\u2705 Database connections closed")
 
@@ -34,11 +35,4 @@ def read_root():
 
 
 if __name__ == "__main__":
-    uvicorn.run(
-        "app.main:app",   
-        host="0.0.0.0",
-        port=9000,
-        reload=True,    
-        workers=1
-    )
-    
+    uvicorn.run("app.main:app", host="0.0.0.0", port=9000, reload=True, workers=1)

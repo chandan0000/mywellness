@@ -1,10 +1,7 @@
-
-
-from pydantic_settings import BaseSettings  
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-     
 
     # Primary DB URLs used by the app (can be provided via .env)
     DATABASE_ASYNC_URL: str | None = None
@@ -22,6 +19,4 @@ class Settings(BaseSettings):
 
 
 # Create a single, reusable instance of the settings
-settings = Settings()  
-
-
+settings = Settings()

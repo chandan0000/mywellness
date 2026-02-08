@@ -1,9 +1,10 @@
-from app.logger import logger
 from sqlalchemy import create_engine
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
-from app.core.db_base import Base
+
 from app.core.config import settings
+from app.core.db_base import Base
+from app.logger import logger
 
 # Synchronous Database Configuration
 engine = create_engine(settings.DATABASE_SYNC_URL, echo=True)
@@ -26,7 +27,6 @@ AsyncSessionLocal = sessionmaker(
 )
 
 
-
 async def get_async_db():
     async with AsyncSessionLocal() as session:
         try:
@@ -37,6 +37,5 @@ async def get_async_db():
 
 async def create_db_and_tables():
     async with async_engine.begin() as conn:
-        logger.info("Creating database tables...") # type: ignore
+        logger.info("Creating database tables...")  # type: ignore
         await conn.run_sync(Base.metadata.create_all)
-

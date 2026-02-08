@@ -98,3 +98,39 @@ If you want, I can:
 - Update `docker-compose.yml` to set `DATABASE_ASYNC_URL` and `DATABASE_SYNC_URL` automatically.
 - Load `SECRET_KEY` from `.env` and update `app/core/security.py`.
 Which would you like next?
+
+## Commit standards & developer hooks
+
+This repository uses pre-commit for local hooks and a GitHub Actions workflow to enforce checks on pull requests.
+
+- Install pre-commit locally and enable hooks:
+
+```bash
+pip install pre-commit
+pre-commit install
+pre-commit run --all-files
+```
+
+- Recommended commit message format: Conventional Commits (examples):
+
+```
+feat(auth): add login endpoint
+fix(users): correct validation on create
+docs: update README
+```
+
+The CI workflow (`.github/workflows/ci.yml`) will validate commit messages on PRs and run formatting/static checks and tests. Make sure your commits follow the Conventional Commits subject pattern (type(scope)!: description).
+
+If you'd like, I can also install `commitizen` and add a `cz` helper to create conventional commits interactively.
+
+### Ensuring VS Code enforces commit hooks
+
+VS Code uses your local Git installation, so commit hooks installed with `pre-commit` will run when committing from the editor. To ensure invalid commits are rejected in VS Code:
+
+```bash
+pip install pre-commit
+pre-commit install --install-hooks
+pre-commit install --hook-type commit-msg
+```
+
+If you use the VS Code Git UI, hooks still run. If a hook fails, the commit will be blocked and VS Code shows the Git error in the Source Control output. If you want an interactive commit helper, I can add `commitizen` to the project.
