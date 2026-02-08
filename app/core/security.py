@@ -1,36 +1,37 @@
 from datetime import datetime, timedelta
-from tokenize import String
 import uuid
 from jose import JWTError, jwt
 from passlib.context import CryptContext
-from fastapi import Depends, HTTPException, Security, status
-from fastapi.security import APIKeyHeader, OAuth2PasswordBearer
+from fastapi import Depends, HTTPException, status
+from fastapi.security import APIKeyHeader
+from app.core.config import settings
 from app.logger import logging
 
-# Secret key & algorithm
-SECRET_KEY = "your-secret-key"
+# Secret key & algorithm (use values from settings)
+SECRET_KEY = settings.SECRET_KEY
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = settings.ACCESS_TOKEN_EXPIRE_MINUTES
 
 # Password hashing
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
 # Token extractor
-api_key_header = APIKeyHeader(name="Authorization",)
-# OAuth2PasswordBearer(tokenUrl="token")
-
+api_key_header = APIKeyHeader(name="Authorization")
 
 
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
+
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
-def create_access_token(data: dict,):
+
+
+def create_access_token(data: dict):
     to_encode = data.copy()
-    expire = datetime.utcnow() + (timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
-    
+
     # Ensure 'sub' is a string
     if "sub" in to_encode:
         to_encode["sub"] = str(to_encode["sub"])
@@ -39,7 +40,7 @@ def create_access_token(data: dict,):
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
-def verify_token(token: str=Depends(api_key_header)) -> str:
+def verify_token(token: str = Depends(api_key_header)) -> uuid.UUID:
     logging.info(f"Verifying token: {token}")
 
     credentials_exception = HTTPException(
@@ -55,7 +56,7 @@ def verify_token(token: str=Depends(api_key_header)) -> str:
         user_id = payload.get("sub")
         if user_id is None:
             raise credentials_exception
-        return uuid.UUID(user_id)  # convert back to int for DB queries
+        return uuid.UUID(user_id)
     except JWTError as e:
         logging.error(f"JWT verification failed: {e}")
         raise credentials_exception

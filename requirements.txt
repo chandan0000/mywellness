@@ -35,3 +35,6 @@ phonenumbers
 pydantic[email]
 python-jose[cryptography]
 python-multipart
+logger
+psycopg2
+psycopg2-binary
