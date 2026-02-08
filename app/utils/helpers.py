@@ -4,7 +4,6 @@ from fastapi import HTTPException
 
 
 class ErrorResponse(HTTPException):
-
     def __init__(self, status_code: int, detail: str, message: str):
         super().__init__(
             status_code=status_code,
@@ -13,7 +12,6 @@ class ErrorResponse(HTTPException):
 
 
 class SuccessResponse:
-
     def __init__(self, detail: Any, status_code: int, message: str):
         self.detail = detail
         self.status_code = status_code

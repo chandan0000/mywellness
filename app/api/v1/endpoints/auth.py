@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy import select
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -7,7 +6,6 @@ from app.core.database import get_async_db
 from app.core.security import create_access_token, hash_password, verify_password
 from app.crud.auth_crud import AuthCRUD
 from app.logger import logging
-from app.models.user import User
 from app.schemas.user import UserCreate, UserLogin
 from app.utils.helpers import ErrorResponse, SuccessResponse
 
@@ -22,7 +20,6 @@ async def login(
     user: UserLogin,
     db: AsyncSession = Depends(get_async_db),
 ):
-
     auth_crud = AuthCRUD(db)
 
     db_user = await auth_crud.get_user_by_email(user.email)

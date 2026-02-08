@@ -1,7 +1,5 @@
 import os
 import uuid
-from logging import log
-from typing import Optional
 
 from fastapi import APIRouter, Depends, File, Form, UploadFile, status
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -9,8 +7,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_async_db
 from app.core.security import verify_token
 from app.crud.user_crud import UserCRUD
-from app.schemas.user import UserResponse, UserUpdate
-from app.utils.helpers import ErrorResponse, SuccessResponse
+from app.schemas.user import UserResponse
+from app.utils.helpers import ErrorResponse
 
 user_router = APIRouter()
 
@@ -23,7 +21,6 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 async def get_user_by_token(
     user_id: uuid.UUID = Depends(verify_token), db: AsyncSession = Depends(get_async_db)
 ):
-
     user_crud = UserCRUD(db)
 
     # Defensive: ensure user_id is a UUID instance (mypy may otherwise report int)
@@ -50,10 +47,10 @@ async def get_all_users(db: AsyncSession = Depends(get_async_db)):
 async def update_user(
     user_id: uuid.UUID = Depends(verify_token),
     db: AsyncSession = Depends(get_async_db),
-    full_name: Optional[str] = Form(None),
-    phone_number: Optional[str] = Form(None),
-    email: Optional[str] = Form(None),
-    profile_picture: Optional[UploadFile] = File(None),
+    full_name: str | None = Form(None),
+    phone_number: str | None = Form(None),
+    email: str | None = Form(None),
+    profile_picture: UploadFile | None = File(None),
 ):
     user_crud = UserCRUD(db)
 

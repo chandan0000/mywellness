@@ -2,7 +2,6 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-
     # Primary DB URLs used by the app (can be provided via .env)
     DATABASE_ASYNC_URL: str | None = None
     DATABASE_SYNC_URL: str | None = None

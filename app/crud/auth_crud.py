@@ -1,11 +1,8 @@
-from fastapi import HTTPException, status
 from sqlalchemy import select
-from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.user import User
 from app.schemas.user import UserCreate
-from app.utils.helpers import ErrorResponse
 
 
 class AuthCRUD:

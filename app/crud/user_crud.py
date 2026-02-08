@@ -9,7 +9,6 @@ from app.schemas.user import UserUpdate
 
 
 class UserCRUD:
-
     def __init__(self, db: AsyncSession):
         self.db = db
 

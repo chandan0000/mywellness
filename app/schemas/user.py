@@ -1,6 +1,5 @@
 import re
 from datetime import datetime
-from typing import Any, Optional
 from uuid import UUID
 
 import phonenumbers
@@ -10,10 +9,9 @@ from app.utils.helpers import ErrorResponse
 
 
 class UserBase(BaseModel):
-
-    full_name: Optional[str] = None
-    phone_number: Optional[str] = None
-    email: Optional[str] = None
+    full_name: str | None = None
+    phone_number: str | None = None
+    email: str | None = None
 
     @field_validator("email")
     def validate_email(cls, v):
@@ -64,7 +62,7 @@ class UserLogin(BaseModel):
 
 class UserResponse(UserBase):
     id: UUID
-    profile_url: Optional[str] = None
+    profile_url: str | None = None
     is_verified: bool
     created_at: datetime
     updated_at: datetime
