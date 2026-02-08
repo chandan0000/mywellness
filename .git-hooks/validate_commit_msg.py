@@ -7,8 +7,8 @@ if not MSG_FILE:
     print("No commit message file provided")
     sys.exit(1)
 
-with open(MSG_FILE, "r", encoding="utf-8") as f:
-    lines = [l.rstrip("\n") for l in f.readlines() if l.strip()]
+with open(MSG_FILE, encoding="utf-8") as f:
+    lines = [line.rstrip("\n") for line in f.readlines() if line.strip()]
 
 if not lines:
     print("Empty commit message")
@@ -22,9 +22,7 @@ pattern = re.compile(
 
 if not pattern.match(subject):
     print(
-        "Invalid commit message subject:\n\n  {}\n\nCommit message must follow Conventional Commits, e.g. 'feat(api): add login'".format(
-            subject
-        )
+        f"Invalid commit message subject:\n\n  {subject}\n\nCommit message must follow Conventional Commits, e.g. 'feat(api): add login'"
     )
     sys.exit(1)
 
