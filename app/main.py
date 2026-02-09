@@ -25,7 +25,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="MyWellness", lifespan=lifespan)
+
 app.mount("/socket.io", socket_app)
+
 app.include_router(api_router, prefix="/api/v1")
 
 

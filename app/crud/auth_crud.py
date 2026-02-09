@@ -15,7 +15,7 @@ class AuthCRUD:
         return result.scalar_one_or_none()
 
     async def create_user(self, user: UserCreate) -> User:
-        new_user = User(**user.dict())
+        new_user = User(**user.model_dump())
         self.db.add(new_user)
 
         await self.db.commit()

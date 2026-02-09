@@ -37,5 +37,5 @@ async def get_async_db():
 
 async def create_db_and_tables():
     async with async_engine.begin() as conn:
-        logger.info("Creating database tables...")  # type: ignore
+        logger.info("Creating database tables...")  #
         await conn.run_sync(Base.metadata.create_all)
